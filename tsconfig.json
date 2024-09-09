@@ -25,6 +25,6 @@
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/users.ts", ".contentlayer/generated"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/users.ts", ".contentlayer/generated", "remark-captions.d.ts"],
   "exclude": ["node_modules"]
 }

@@ -16,8 +16,8 @@ import rehypeSlug from 'rehype-slug';
 // support for github flavored markdown
 import remarkGfm from 'remark-gfm';
 // support for math
-import remarkMath from 'remark-math';
 import emoji from 'remark-emoji';
+
 
 const Post = defineDocumentType(() => ({
   name: 'Post',
@@ -62,7 +62,7 @@ export default makeSource({
   contentDirPath: 'posts',
   documentTypes: [Post],
   	mdx: {
-		remarkPlugins: [remarkGfm, remarkMath],
+		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
 			rehypeSlug,
 			rehypeAutolinkHeadings,
