@@ -1,80 +1,81 @@
-import { allPosts } from 'contentlayer/generated'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import Head from 'next/head';
+import { allPosts } from 'contentlayer/generated';
+import dayjs from 'dayjs';
+import { Metadata } from 'next';
+import { useMDXComponent } from 'next-contentlayer/hooks';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { BlogTag } from '../../../components/BlogTag';
 import { BlogMDXComponents } from '../../../components/mdx';
-import PageWrapper from '../../../components/PageWrapper';
 
-interface Post {
-    title: string;
-    author: string;
-    date: string;
-    image: string;
-    imageAlt?: string;
-    excerpt?: string;
-    tags: string[];
-    url: string;
-    slug: string;
-    readTime: string;
+export function generateStaticParams(): Array<Props['params']> {
+	return allPosts.map((post) => ({ slug: post.slug }));
 }
 
-interface GenerateStaticParamsResult {
-    notFound: boolean;
-    props?: { post: Post };
+interface Props {
+	params: { slug: string };
 }
 
-const PostPage = ({ params }: { params: { slug: string } }) => {
-    const post: any = allPosts.find((post) => post._raw.flattenedPath === params.slug)
-    const MDXContent = useMDXComponent(post.body.code)
+export function generateMetadata({ params }: Props): Metadata {
+	const post = allPosts.find((post) => post.slug === params.slug)!;
+	const description =
+		post.excerpt?.length || 0 > 160 ? post.excerpt?.substring(0, 160) + '...' : post.excerpt;
 
-    const description =
-        post.excerpt?.length || 0 > 160 ? post.excerpt?.substring(0, 160) + '...' : post.excerpt;
-
-    return (
-        <PageWrapper>
-            <Head>
-                <title>{`${post.title} - Spacedrive Blog`}</title>
-                <meta name="description" content={description} />
-                <meta property="og:title" content={post.title} />
-                <meta property="og:description" content={description} />
-                <meta property="og:image" content={post.image} />
-                <meta content="summary_large_image" name="twitter:card" />
-                <meta name="author" content={post.author} />
-            </Head>
-            <div className="lg:prose-xs prose dark:prose-invert container m-auto mb-20 max-w-4xl p-4 pt-14">
-                <>
-                    <figure>
-                        <Image
-                            src={post.image}
-                            alt={post.imageAlt ?? ''}
-                            className="mt-8 rounded-xl"
-                            height={400}
-                            width={900}
-                        />
-                    </figure>
-                    <section className="-mx-8 flex flex-wrap gap-4 rounded-xl px-8">
-                        <div className="w-full grow">
-                            <h1 className="m-0 text-2xl leading-snug sm:text-4xl sm:leading-normal">
-                                {post.title}
-                            </h1>
-                            <p className="m-0 mt-2">
-                                by <b>{post.author}</b> &middot;{' '}
-                                {new Date(post.date).toLocaleDateString()}
-                            </p>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                            {post.tags.map((tag:any) => (
-                                <BlogTag key={tag} name={tag} />
-                            ))}
-                        </div>
-                    </section>
-                    <article id="content" className="text-lg">
-                        <MDXContent components={BlogMDXComponents} />
-                    </article>
-                </>
-            </div>
-        </PageWrapper>
-    );
+	return {
+		title: `${post.title} - Bravin Blog`,
+		description,
+		authors: { name: post.author },
+		openGraph: {
+			title: post.title,
+			description,
+			images: post.image
+		},
+		twitter: {
+			card: 'summary_large_image'
+		}
+	};
 }
-export default PostPage;
+
+export default function Page({ params }: Props) {
+	const post = allPosts.find((post) => post.slug === params.slug);
+
+	if (!post) notFound();
+
+	const MDXContent = useMDXComponent(post.body.code);
+
+	return (
+		<div className="lg:prose-xs container prose m-auto mb-20 max-w-4xl p-5 pt-14 dark:prose-invert">
+			<>
+				<figure>
+					<Image
+						src={post.image}
+						alt={post.imageAlt ?? ''}
+						className="mt-8 rounded-xl will-change-transform fade-in"
+						height={400}
+						width={900}
+					/>
+				</figure>
+				<section className="flex flex-wrap gap-4 rounded-xl px-4">
+					<div className="w-full grow">
+						<h1 className="animation-delay-1 m-0 text-2xl leading-snug will-change-transform fade-in sm:text-4xl sm:leading-normal">
+							{post.title}
+						</h1>
+						<p className="animation-delay-2 m-0 mt-2 will-change-transform fade-in">
+							by <b>{post.author}</b> &middot; {dayjs(post.date).format('MM/DD/YYYY')}
+						</p>
+					</div>
+					<div className="animation-delay-3 flex flex-wrap gap-2 will-change-transform fade-in">
+						{post.tags.map((tag) => (
+							<BlogTag key={tag} name={tag} />
+						))}
+					</div>
+				</section>
+				<article
+					id="content"
+					className="animation-delay-4 px-4 text-lg will-change-transform fade-in"
+				>
+					<MDXContent components={BlogMDXComponents} />
+				</article>
+			</>
+		</div>
+	);
+}

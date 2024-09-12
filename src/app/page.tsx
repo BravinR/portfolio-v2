@@ -9,13 +9,8 @@ function Home() {
 
   return (
     <div className="overflow-hidden lg:text-xl 2xl:mx-[15%] xl:mx-[10%]">
-      <NavBar />
       <div className="flex justify-between mx-7 lg:mx-24">
         <div className='hidden lg:block'>
-          <div>02</div>
-          <div>03</div>
-          <div>02</div>
-          <div>02</div>
         </div>
         <div className="mt-20 lg:mt-40 ">
           <div className='flex flex-col gap-4 lg:gap-10'>

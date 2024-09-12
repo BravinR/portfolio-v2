@@ -25,6 +25,7 @@ function NavBar() {
   return (
     <header className="text-sm mt-4 mx-7 lg:mx-24 lg:mt-8 lg:text-xl">
       <div className="flex justify-between">
+        <a href="/">
         <svg className="w-14" viewBox="0 0 87 116" fill="none" xmlns="http://www.w3.org/2000/svg">
           <g opacity="0.99">
             <path opacity="0.99" d="M50.602 115.7H0V42.72H50.602C70.672 42.72 87 59.0893 87 79.21C87 99.3306 70.672 115.7 50.602 115.7ZM15.0918 100.57H50.602C56.2528 100.57 61.6721 98.3195 65.6677 94.3138C69.6634 90.308 71.9082 84.875 71.9082 79.21C71.9082 73.5449 69.6634 68.1119 65.6677 64.1062C61.6721 60.1004 56.2528 57.85 50.602 57.85H15.0918V100.57Z" fill="url(#paint0_linear_12_1)" />
@@ -44,6 +45,7 @@ function NavBar() {
             </linearGradient>
           </defs>
         </svg>
+        </a>
         <div className="text-text space-x-4 lg:space-x-8">
           <a href="#projects-anchor" onClick={handleAnchorClick} className="hover:text-gray-200">Projects</a>
           <a href="#about-anchor" onClick={handleAnchorClick} className="hover:text-gray-200 hidden">About Me</a>
