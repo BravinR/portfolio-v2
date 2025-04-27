@@ -1,5 +1,5 @@
 # STAGE 1: Base image for dependencies
-FROM node:18-alpine as base
+FROM node:23-slim as base
 
 WORKDIR /app
 
@@ -26,7 +26,7 @@ RUN npm run build
 RUN npm prune --production
 
 # STAGE 3: Final production image
-FROM node:18-alpine as production
+FROM node:23-slim as production
 
 WORKDIR /app
 
