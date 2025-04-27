@@ -51,3 +51,18 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             APP_VERSION=$DOCKER_METADATA_OUTPUT_VERSION
+  deploy:
+    name: Deploy to Environment
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: '${{ secrets.VPS_IP }}'
+          username: '${{ secrets.VPS_USERNAME }}'
+          key: '${{ secrets.SSH_PRIVATE_KEY }}'
+          port: '${{ secrets.SSH_PORT }}'
+          script: |
+            export IMAGE_VERSION=${{ needs.build.outputs.APP_VERSION }}
+            echo "Image version: $IMAGE_VERSION"
