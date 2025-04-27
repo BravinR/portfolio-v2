@@ -23,10 +23,6 @@ jobs:
           images: '${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}'
           tags: |
             type=match,pattern=release-(.*),group=1
-            type=match,pattern=release-(\d+.\d+).*,group=1
-            type=match,pattern=release-(\d+.\d+).*,group=1
-            type=ref,event=branch
-            type=ref,event=pr
 
       - name: Set Version
         id: version-selector
