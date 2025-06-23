@@ -150,7 +150,7 @@ function Home() {
             <div className="relative flex items-center justify-end">
               <img
                 className="w-[220px] lg:w-[610px] lg:h-[403px]"
-                src="/RecipePro.png"
+                src="/recipes-test-one.png"
                 alt="website screenshot of recipe website"
               ></img>
               <div className="absolute left-0 top-0 lg:left-1/4 lg:top-24">
@@ -195,7 +195,7 @@ function Home() {
                       </defs>
                     </svg>
                   </a>
-                  <a href="https://recipepro.netlify.app">
+                  <a href="https://recipes.bravin.dev">
                     <svg
                       width="20"
                       height="20"
