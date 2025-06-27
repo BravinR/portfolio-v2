@@ -62,7 +62,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           } `}
         >
           <img
-            className="w-full h-auto lg:h-[400px] object-cover rounded-md"
+            className="w-full h-auto object-cover rounded-md"
             src={imageSrc}
             alt={imageAlt}
           />
@@ -91,7 +91,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         >
           {title}
         </h1>
-        <div className="bg-[#020107] p-5 rounded md:w-50%">
+        <div className="bg-[#020107] p-5 rounded">
           <p className="hidden lg:flex text-[#B3B0E0]">{description}</p>
           <p className="flex lg:hidden text-[#B3B0E0] text-xs">
             {description.substring(0, 100)}...
@@ -124,27 +124,31 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
 function Home() {
   const featuredProjects = [
     {
-      title: "Leica Store",
-      description:
-        "\"Leica M16\" is an e-commerce landing page case study that demonstrates the creative use of a single color to craft a visually striking and thoughtful website, showcasing the power of a monochromatic design approach in web design.",
-      imageSrc: "/LeicaStore3.png",
-      imageAlt: "website screenshot of Leica Store website",
-      githubLink: "https://github.com/BravinR/One-color-UI",
-      liveDemoLink: "https://vibrant-yalow-8b054d.netlify.app",
-    },
-    {
       title: "Recipe Pro",
       description:
-        "\"Recipe Pro\" is a website that offers access to a vast database of over 100,000 recipes from around the world. Users can search for recipes, view the ingredient lists, and find the calorie information for each dish, making it a valuable resource for cooking enthusiasts.",
+        "\"Recipe Pro\" is a website that offers access to a vast database of over 100,000 recipes from around the world."+
+        " Users can search for recipes, view the ingredient lists, and find the calorie information for each dish, making it a"+ 
+        " valuable resource for cooking enthusiasts.",
       imageSrc: "/recipes-test-one.png",
       imageAlt: "website screenshot of recipe website",
       githubLink: "https://github.com/BravinR/Recipe-Search-Api",
       liveDemoLink: "https://recipes.bravin.dev",
     },
     {
+      title: "Leica Store",
+      description:
+        "\"Leica M16\" is an e-commerce landing page case study that demonstrates the creative use of a single color to craft a visually "+
+        "striking and thoughtful website, showcasing the power of a monochromatic design approach in web design.",
+      imageSrc: "/LeicaStore3.png",
+      imageAlt: "website screenshot of Leica Store website",
+      githubLink: "https://github.com/BravinR/One-color-UI",
+      liveDemoLink: "https://vibrant-yalow-8b054d.netlify.app",
+    },
+    {
       title: "Share Me",
       description:
-        "\"Share Me\" is a website that enables users to share photos with their friends, who can like and comment on the shared images. It provides a platform for social interaction through photo sharing and engagement features.",
+        "\"Share Me\" is a website that enables users to share photos with their friends, who can like and comment on the shared images. "+
+        "It provides a platform for social interaction through photo sharing and engagement features.",
       imageSrc: "/ShareMe.png",
       imageAlt: "website screenshot of a gallery website",
       githubLink: "#",
@@ -156,22 +160,24 @@ function Home() {
     {
       title: "Tealoy",
       description:
-        "Tealoy is a web app that provides real-time analytics, content recommendation, and personalization with tags, and a machine learning system to enhance the user experience.",
-      githubLink: "#",
+        "Tealoy is a web app that provides real-time analytics, content recommendation, and personalization with tags," + 
+        " and a machine learning system to enhance the user experience.",
+      githubLink: "https://github.com/BravinR/Lireddit",
       liveDemoLink: "#",
     },
     {
-      title: "Capricorn",
+      title: "Secure Password Generator",
       description:
-        "A comprehensive scheduling solution with calendar management, session booking, and integration with Slack and Twitter for streamlined login.",
-      githubLink: "#",
-      liveDemoLink: "#",
+        "A modern, server-side password generator built with FastAPI and Jinja2 templates. Generate cryptographically secure passwords with customizable patterns, all processed server-side for maximum security.",
+      githubLink: "https://github.com/BravinR/password-generator",
+      liveDemoLink: "https://password-generator.bravin.dev/",
     },
     {
       title: "Music Transfer",
       description:
-        "A utility that enables users to effortlessly transfer their playlists and albums from Spotify to Apple Music, providing a seamless way to enjoy music on their preferred platform.",
-      githubLink: "#",
+        "A utility that enables users to effortlessly transfer their playlists and albums from Spotify to Apple Music,"+
+        " providing a seamless way to enjoy music on their preferred platform.",
+      githubLink: "https://github.com/BravinR/YouTube-API-Playlist",
       liveDemoLink: "#",
     },
   ];

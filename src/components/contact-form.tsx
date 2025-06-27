@@ -6,7 +6,6 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { toast } from "sonner"
 
 export function ContactForm() {
   const [isLoading, setIsLoading] = useState(false)
@@ -18,7 +17,6 @@ export function ContactForm() {
     // Simulate form submission
     await new Promise((resolve) => setTimeout(resolve, 1000))
 
-    toast.success("Message sent successfully!")
     setIsLoading(false)
     ;(e.target as HTMLFormElement).reset()
   }
