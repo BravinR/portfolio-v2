@@ -65,4 +65,5 @@ jobs:
           port: '${{ secrets.SSH_PORT }}'
           script: |
             export IMAGE_VERSION=${{ needs.build.outputs.APP_VERSION }}
-            dokku git:from-image bravin-portfolio bravinr/portfolio:IMAGE_VERSION
+            echo Image version=${IMAGE_VERSION}
+            dokku git:from-image bravin-portfolio bravinr/portfolio:${IMAGE_VERSION}
